@@ -26,13 +26,11 @@ steps:
       - pull_request
 
 - name: publish
-  image: plugins/docker
+  image: ueniltd/kaniko
+  pull: always
   settings:
-    repo: davidbyttow/drone-ecr-registry-plugin
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
+    image_name: 362870652376.dkr.ecr.eu-central-1.amazonaws.com/drone-ecr-registry-plugin
+    cache: true
     dockerfile: docker/Dockerfile
     tags:
       - latest
